@@ -1,0 +1,66 @@
+<div class="container">
+    <h1 class="col-12 m-auto color_red text-center font_semibold mt-5">{{title}}</h1>
+    <!--Sử dụng cặp ngoặc nhọn {{tên biên đã định nghĩa bên app.component.ts}}-->
+    <p class="text-center">{{subtitle}}</p>
+    <div class="form-group col-6">
+      <label for="searchInput" class="font_semibold">Search</label>
+      <input type="text" class="form-control" id="searchInput" (input) = "onSearch($event)">
+      <!--output-->
+      <p>{{searchValue}}</p>
+    </div>
+    <p class="font_semibold mt-5">Thêm mới</p>
+    <form class="col-10 border p-2" >
+      <div class="form-group">
+        <label for="inputName">Name: </label>
+        <input type="text" class="form-control" id="inputName" 
+        (input) ="onChangeInput($event, 'name')"
+        [value]="newUser.name">
+      </div>
+      <div class="form-group">
+        <label for="inputHeight">Height: </label>
+        <input type="text" class="form-control" id="inputHeight"
+         (input) ="onChangeInput($event, 'height')"
+         [value]="newUser.height">
+      </div>
+      <div class="form-group">
+        <label for="inputWeight">Weight: </label>
+        <input type="text" class="form-control" id="inputWeight" 
+        (input) ="onChangeInput($event, 'weight')"
+        [value]="newUser.weight">
+      </div>
+      <div class="form-group">
+        <label for="inputAvatar">Avatar: </label>
+        <input type="text" class="form-control" id="inputAvatar" 
+        (input) ="onChangeInput($event, 'image')"
+        [value]="newUser.image">
+      </div>
+      <button type="button" class="btn btn-primary mt-2" [disabled]="!onValidate(newUser)" (click)="onSubmit()">Submit</button>
+    </form>
+    <p class="font_semibold mt-5">Danh sách</p>
+    <table class="table col-10 m-auto table-hover mt-2">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Height</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Avatar</th>
+          <th scope="col">Active</th>
+        </tr>
+      </thead>
+      <!-- <tbody *ngIf="students.length < 0"> -->
+      <tbody *ngIf="users.length > 0">
+        <tr *ngFor = "let user of filterUsers">
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.height}}</td>
+          <td>{{user.weight}}</td>
+          <td><img [src]="user.image" width="200px" alt=""></td>
+          <td>
+            <button (click)="remove(user.id)" class="btn btn-danger me-3">Delete</button>
+            <button (click)="onEdit(user)" class="btn btn-success">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
