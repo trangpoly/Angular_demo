@@ -1,41 +1,8 @@
-<!--pipe tenbien | kiểu dữ liệu(json)-->
 <div class="conatiner">
-    <p>{{productForm.value | json }}</p>
-    <p>{{newProduct | json}}</p>
     <div class="row">
         <div class="col-12">
-            <form #productForm="ngForm" action="" class="form col-6 border p-2"
-            (submit) ="onSubmit(productForm.value)"
-            >
-                <div class="form-group">
-                    <label>Name: </label>
-                    <input type="text" class="form-control" 
-                    name="name"
-                    [(ngModel)] = "newProduct.name"
-                    [value]="newProduct.name"
-                    >
-                </div>
-                <div class="form-group">
-                    <label>Price: </label>
-                    <input type="text" class="form-control"
-                     name="price"
-                     [(ngModel)] = "newProduct.price"
-                     [value]="newProduct.price"
-                     >
-                </div>
-                <div class="form-group">
-                    <label>Desc: </label>
-                    <input type="text" class="form-control" 
-                    name="desc"
-                    [(ngModel)] = "newProduct.desc"
-                    [value]="newProduct.desc"
-                    >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success mt-2">Submit</button>
-                </div>
-            </form>
             <h3 class="font_semibold mt-5">Danh sách sản phẩm</h3>
+            <a [routerLink]="['/product/create']" class="btn btn-success m-2">Thêm mới</a>
             <table class="col-5 table m-auto table-hover mt-2">
             <thead>
                 <tr>
@@ -53,8 +20,9 @@
                 <td>{{product.price}}</td>
                 <td>{{product.desc}}</td>
                 <td>
-                    <button class="btn btn-danger me-3">Delete</button>
-                    <button class="btn btn-success" (click) = "onEdit(product.id)">Edit</button>
+                    <a [routerLink]="['/product',product.id]" class="btn btn-primary me-3">Xem chi tiết</a>
+                    <button (click)="onDelete(product.id)" class="btn btn-danger me-3">Xóa</button>
+                    <a [routerLink]="['/product',product.id,'edit']" class="btn btn-success">Edit</a>
                 </td>
                 </tr>
             </tbody>

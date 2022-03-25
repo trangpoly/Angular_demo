@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { subscribeOn } from 'rxjs';
+
+import { ProductService } from '../services/product.service';
+
 
 @Component({
   selector: 'app-product',
@@ -6,65 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  constructor() { }
+  products:any;
+  constructor(
+    private ps: ProductService,
+    ) { }
 
   ngOnInit(): void {
+    this.ps.getProducts().subscribe(data => {
+      this.products = data;
+      console.log(this.products);
+    })
   }
-  // products = [{
-  //   name: 'hihi',
-  //   price: 200,
-  //   desc: 'haha',
-  //   id: 1
-  // }];
-  products = new Array();
   newProduct = {
     name: '',
     price: 0,
     desc: '',
     id: 0
   };
-  // productEdit = {
-  //   name: '',
-  //   price: 0,
-  //   desc: '',
-  //   id: 0
-  // };
-  onSubmit(product: any){
-    // console.log(product);
-    if(this.newProduct.id){
-      console.log(this.products);
-      let index = this.newProduct.id-1;
-
-      this.products.splice(index,1,this.newProduct);
-      console.log(this.products);
-      this.newProduct = {
-        name: '',
-        price: 0,
-        desc: '',
-        id: 0
-      };
-    }
-    else {
-      this.newProduct = {
-        ...this.newProduct,
-        id: this.products.length + 1,
-        name: product.name,
-        price: Number(product.price),
-        desc: product.desc
-      }
-      this.products.push(this.newProduct);
-      // console.log(this.products);
-      this.newProduct = {
-        name: '',
-        price: 0,
-        desc: '',
-        id: 0
-      };
-
-    }
-    
-  }
   onEdit(id:number){
     // console.log(this.newProduct);
     console.log(this.products);
@@ -72,5 +34,17 @@ export class ProductComponent implements OnInit {
       ...this.products[id - 1]
     }
     console.log(this.newProduct);
+  }
+  onGetList(){
+    this.ps.getProducts().subscribe(data => {
+      this.products = data  
+    })
+  }
+  onDelete(id: number | string){
+    console.log(id);
+    this.ps.deleleProduct(id).subscribe( data => {
+      this.onGetList();
+    }
+    );
   }
 }

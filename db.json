@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "Iphone 13",
+      "price": "045000000",
+      "desc": "APPLE",
+      "id": 1
+    },
+    {
+      "name": "SamSumg",
+      "price": "3200000",
+      "desc": "SamSung",
+      "id": 2
+    },
+    {
+      "name": "Phạm Thu Trang",
+      "price": 100,
+      "desc": "APPLE 1",
+      "id": 3
+    }
+  ]
+}
