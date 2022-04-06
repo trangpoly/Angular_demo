@@ -18,6 +18,13 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { ProductNameComponent } from './components/product-name/product-name.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ShowValidateComponent } from './components/show-validate/show-validate.component';
+import { ProductStatusComponent } from './components/product-status/product-status.component';
+import { AdminComponent } from './layouts/admin/admin.component';
+import { ClientComponent } from './layouts/client/client.component';
 
 //NgModule định nghĩa module tổng
 @NgModule({
@@ -32,14 +39,20 @@ import { FooterComponent } from './layout/footer/footer.component';
     LayoutComponent,
     HeaderComponent,
     AsideComponent,
-    FooterComponent
+    FooterComponent,
+    ShowValidateComponent,
+    ProductNameComponent,
+    ProductStatusComponent,
+    AdminComponent,
+    ClientComponent
   ],
   imports: [ //import các thành phần cần sử dụng
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule, //improt cho các component con sử dụng được
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService], //Định nghĩa các service có thể dùng
   bootstrap: [AppComponent]

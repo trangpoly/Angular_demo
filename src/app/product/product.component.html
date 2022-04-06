@@ -1,4 +1,5 @@
 <div class="conatiner">
+    <router-outlet></router-outlet>
     <div class="row">
         <div class="col-12">
             <h3 class="font_semibold mt-5">Danh sách sản phẩm</h3>
@@ -10,15 +11,29 @@
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Desc</th>
+                <th scope="col">Status</th>
                 <th scope="col">Active</th>
                 </tr>
             </thead>
             <tbody *ngIf="products.length > 0">
                 <tr *ngFor="let product of products">
                 <td>{{product.id}}</td>
-                <td>{{product.name}}</td>
+                <td>
+                    <app-product-name
+                     [name]="product.name"
+                     >
+                    </app-product-name>
+                </td>
+                <!-- <td>{{product.name}}</td> -->
                 <td>{{product.price}}</td>
                 <td>{{product.desc}}</td>
+                <td>
+                    <app-product-status 
+                    [status]="product.status"
+                    (changeStatus)="parentChangeStatus($event, product.id)"
+                    >
+                </app-product-status>
+                </td>
                 <td>
                     <a [routerLink]="['/product',product.id]" class="btn btn-primary me-3">Xem chi tiết</a>
                     <button (click)="onDelete(product.id)" class="btn btn-danger me-3">Xóa</button>

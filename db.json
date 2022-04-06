@@ -4,18 +4,21 @@
       "name": "Iphone 13",
       "price": "045000000",
       "desc": "APPLE",
+      "status": 0,
       "id": 1
     },
     {
       "name": "SamSumg",
       "price": "3200000",
       "desc": "SamSung",
+      "status": 1,
       "id": 2
     },
     {
       "name": "Phạm Thu Trang",
       "price": 100,
       "desc": "APPLE 1",
+      "status": 0,
       "id": 3
     }
   ]

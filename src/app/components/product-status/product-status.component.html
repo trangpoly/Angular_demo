@@ -1,0 +1,6 @@
+<button *ngIf="status===1" class="btn btn-warning" (click)="onChangeStatus(0)">
+    Kích hoạt
+</button>
+<button *ngIf="status===0" class="btn btn-warning" (click)="onChangeStatus(1)">
+    Chưa kích hoạt
+</button>

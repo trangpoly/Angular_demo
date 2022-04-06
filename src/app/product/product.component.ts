@@ -47,4 +47,17 @@ export class ProductComponent implements OnInit {
     }
     );
   }
+  parentChangeStatus(newStatus: number, productId: number){
+    const currentProduct = this.products.find((product:any) => product.id === productId)
+    if(currentProduct){
+      this.ps.updateProduct(
+        productId,
+        {
+          ...currentProduct,
+          status: newStatus
+        }
+      ).subscribe((data: any) => this.onGetList());
+    }
+    
+  }
 }

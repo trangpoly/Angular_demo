@@ -1,1 +1,55 @@
-<p>register works!</p>
+<p>register form!</p>
+
+<p>{{registerForm.get('username')?.errors | json}}</p>
+<form [formGroup]="registerForm" class="form-group col-6">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" formControlName="username">
+        <app-show-validate
+            [formField] = "registerForm.get('username')"
+            key = "Username" >
+        </app-show-validate>
+        <!-- <div class="text-danger" *ngIf="registerForm.get('username')?.dirty">
+            <p *ngIf="registerForm.get('username')?.errors?.['required']">Username không được để trống</p>
+            <p *ngIf="registerForm.get('username')?.errors?.['minlength']">Username lớn hơn 6 ký tự</p>
+            <p *ngIf="registerForm.get('username')?.errors?.['hasName']">Username phải chứa 'trang'</p>
+        </div> -->
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+        <app-show-validate
+            [formField] = "registerForm.get('password')"
+            key = "Password" >
+        </app-show-validate>
+        <!-- <div class="text-danger" *ngIf="registerForm.get('password')?.dirty">
+            <p *ngIf="registerForm.get('password')?.errors?.['required']">Password không được để trống</p>
+            <p *ngIf="registerForm.get('password')?.errors?.['minlength']">Password lớn hơn 8 ký tự</p>
+        </div> -->
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <app-show-validate
+            [formField] = "registerForm.get('name')"
+            key = "Name" >
+        </app-show-validate>
+        <!-- <div class="text-danger" *ngIf="registerForm.get('name')?.dirty">
+            <p *ngIf="registerForm.get('name')?.errors?.['required']">Name không được để trống</p>
+            <p *ngIf="registerForm.get('name')?.errors?.['minlength']">Name lớn hơn 10 ký tự</p>
+        </div> -->
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" formControlName="email">
+        <app-show-validate
+            [formField] = "registerForm.get('email')"
+            key = "Email" >
+        </app-show-validate>
+        <!-- <div class="text-danger" *ngIf="registerForm.get('email')?.dirty">
+            <p *ngIf="registerForm.get('email')?.errors?.['required']">Email không được để trống</p>
+            <p *ngIf="registerForm.get('email')?.errors?.['email']">Email sai định dạng</p>
+        </div> -->
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Sign up</button>
+</form>
